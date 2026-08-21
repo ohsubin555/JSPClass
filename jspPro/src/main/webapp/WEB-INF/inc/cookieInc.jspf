@@ -1,0 +1,18 @@
+<%@page import="com.util.Cookies"%>
+<%
+  //쿠키 저장 : 인증 + 권한
+  String loginUser = null; //쿠키 이름 : loginUser
+  String loginUserRole = null; // ADMIN MANAGER USER
+  
+  //생성자:cookieMap<k,v>
+  Cookies cookies =new Cookies(request);
+  
+  //boolean cookies.exists("loginUser");
+  loginUser = cookies.getValue("loginUser");//이 이름의 쿠키를 가져와서 밸류를 돌려준다.
+  loginUserRole = cookies.getValue("loginUserRole");//이 이름의 쿠키를 가져와서 밸류를 돌려준다.
+  
+  //EL
+  request.setAttribute("loginUser", loginUser);
+  request.setAttribute("loginUserRole", loginUserRole);
+  
+%>

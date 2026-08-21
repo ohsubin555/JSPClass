@@ -1,0 +1,22 @@
+<%@page import="days08.AuthUser"%>
+<%@page import="com.util.Cookies"%>
+<%
+  AuthUser authUser = (AuthUser)session.getAttribute("authUser");
+
+  //쿠키 저장 : 인증 + 권한
+  String loginUser = null; //쿠키 이름 : loginUser
+  String loginUserRole = null; // ADMIN MANAGER USER
+  
+  if(authUser != null){
+      //loginUser = (String)session.getAttribute("loginUser");
+	  loginUser = authUser.getLoginUser();
+	  
+     //loginUserRole = (String)session.getAttribute("loginUserRole");
+	  loginUserRole = authUser.getLoginUserRole();
+  }
+  
+  request.setAttribute("loginUser", loginUser);
+  request.setAttribute("loginUserRole", loginUserRole);
+
+  
+%>

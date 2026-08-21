@@ -1,0 +1,49 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2026. 8. 11. 오전 10:28:18</title>
+<link rel="shortcut icon" type="image/x-icon" href="/images/SiSt.ico">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/resources/cdn-main/example.css">
+<script src="/resources/cdn-main/example.js"></script>
+</head>
+<body>
+<header>
+  <h1 class="main"><a href="#" style="position: absolute;top:30px;">Subin YaHo</a></h1>
+  <ul>
+    <li><a href="#">로그인</a></li>
+    <li><a href="#">회원가입</a></li>
+  </ul>
+</header>
+<div>
+  <xmp class="code">
+   
+   
+  </xmp>
+  
+   > p name : <%= pageContext.getAttribute("name")%><br>
+   > r age : <%= request.getAttribute("age")%><br>
+   > s addr : <%= session.getAttribute("addr")%><br>
+   > tel : <%= application.getAttribute("tel")%><br>
+   
+   <hr>
+  <!--   EL 수정  -->
+   > p name : ${pageScope.name}<br>
+   > r age : ${requestScope.age}<br>
+   > s addr : ${sessionScope.addr}<br>
+   > tel : ${applicationScope.tel}<br>
+   
+   <hr>
+  <!--   EL 수정  -->
+   > p name : ${name}<br>
+   > r age : ${age}<br>
+   > s addr : ${addr}<br>
+   > tel : ${tel}<br>
+</div>
+<script>
+</script>
+</body>
+</html>
