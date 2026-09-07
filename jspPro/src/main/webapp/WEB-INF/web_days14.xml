@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+	id="WebApp_ID" version="6.0">
+	<display-name>jspPro</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.xhtml</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.xhtml</welcome-file>
+	</welcome-file-list>
+
+	<!-- Tomcat JSP 컴파일러 자바 버전을 21로 강제 설정 시작 -->
+	<!-- 텍스트블럭 """ 사용을 위해서 추가 설정 -->
+	<servlet>
+		<servlet-name>jsp</servlet-name>
+		<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+		<init-param>
+			<param-name>compilerSourceVM</param-name>
+			<param-value>21</param-value>
+		</init-param>
+		<init-param>
+			<param-name>compilerTargetVM</param-name>
+			<param-value>21</param-value>
+		</init-param>
+	</servlet>
+	<!-- 설정 끝 -->
+
+	<resource-ref>
+		<description>Oracle Datasource example</description>
+		<res-ref-name>jdbc/myoracle</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<!-- 1번 필터 등록: 인코딩 필터 -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>com.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+	<!-- p704 코딩 그대로 -->
+	<servlet>
+		<description>서블릿 3.1 파일 업로드 테스트</description>
+		<servlet-name>WriteServlet</servlet-name>
+		<servlet-class>days13.WriteServlet</servlet-class>
+		<multipart-config>
+			<location>C:\Tools\apache-tomcat-10.1.57\temp</location>
+			<max-file-size>-1</max-file-size>
+			<max-request-size>-1</max-request-size>
+			<file-size-threshold>1024</file-size-threshold>
+		</multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WriteServlet</servlet-name>
+		<url-pattern>/days13/write.ss</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>UpdateServlet</servlet-name>
+		<servlet-class>days13.UpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateServlet</servlet-name>
+		<url-pattern>/days13/update.ss</url-pattern>
+	</servlet-mapping>
+</web-app>
+
+

@@ -20,8 +20,25 @@
 </header>
 <div>
   <xmp class="code">
+      days13.ex01.jsp
+      
+     create table filetest(          
+     num number not null primary key  
+     , subject varchar2(50) not null     
+     
+     , filesystemname varchar2(100) -- 실제 저장되는 파일명       a1.txt
+     , originalfilename varchar2(100) -- 저장할 때 파일명             a.txt
+     , filelength number  -- 파일크기
+);
+    
+     create sequence seq_filetest;  
+     
+   /days13/write.ss -> /days13/WriteServlet.java
+   /days13/list.ss -> /days13/ListServlet.java
       
   </xmp>
+   <a href="/days13/write.ss">글쓰기</a><br>
+   <a href="/days13/list.ss">글 목록</a><br>
 </div>
 <script>
 

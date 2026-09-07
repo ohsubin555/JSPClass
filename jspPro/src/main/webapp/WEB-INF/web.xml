@@ -1,78 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" 
-xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" 
-id="WebApp_ID" version="6.0">
-  <display-name>jspPro</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.xhtml</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.xhtml</welcome-file>
-  </welcome-file-list>
-    
-  <!-- Tomcat JSP 컴파일러 자바 버전을 21로 강제 설정 시작 -->
-  <!-- 텍스트블럭 """ 사용을 위해서 추가 설정 -->
-  <servlet>
-      <servlet-name>jsp</servlet-name>
-      <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
-      <init-param>
-          <param-name>compilerSourceVM</param-name>
-          <param-value>21</param-value>
-      </init-param>
-      <init-param>
-          <param-name>compilerTargetVM</param-name>
-          <param-value>21</param-value>
-      </init-param>
-  </servlet>
-  <!-- 설정 끝 -->
-      
-  <resource-ref>
-    <description>Oracle Datasource example</description>
-    <res-ref-name>jdbc/myoracle</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref> 
-  
-  <!-- 1번 필터 등록: 인코딩 필터 -->
-  <filter>
-    <filter-name>characterEncodingFilter</filter-name>
-    <filter-class>com.filter.CharacterEncodingFilter</filter-class>
-    <init-param>
-      <param-name>encoding</param-name>
-      <param-value>UTF-8</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>characterEncodingFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-    <dispatcher>REQUEST</dispatcher>    
-  </filter-mapping> 
-  
-   <!-- 704 코딩그대로 -->
-<servlet>
-      <description>서블릿 3.1 파일 업로드 테스트</description>
-      <servlet-name>uploadServlet</servlet-name>
-      <servlet-class>days11.UploadServlet</servlet-class>
-      <multipart-config>
-          <!-- 업로드 파일이 임시로 저장될 위치 -->
-         <location>C:\Tools\apache-tomcat-10.1.57\temp</location>
-         <!-- 파일 1개의 최대 크기, -1 제한 없음 -->
-         <max-file-size>-1</max-file-size> 
-         <!-- 한번 업로드할 때 최대 크기 -->  
-         <max-request-size>-1</max-request-size>
-         <!-- 1024 보다 업로드 파일의 크기가 크면 지정한 임시 디렉토리에 파일 생성 --> 
-         <file-size-threshold>1024</file-size-threshold>
-      </multipart-config>
-   </servlet>
-   <servlet-mapping>
-      <servlet-name>uploadServlet</servlet-name>
-      <url-pattern>/days11/upload</url-pattern>
-   </servlet-mapping>
-   
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+	id="WebApp_ID" version="6.0">
+	<display-name>jspPro</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.xhtml</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.xhtml</welcome-file>
+	</welcome-file-list>
+
+	<!-- Tomcat JSP 컴파일러 자바 버전을 21로 강제 설정 시작 -->
+	<!-- 텍스트블럭 """ 사용을 위해서 추가 설정 -->
+	<servlet>
+		<servlet-name>jsp</servlet-name>
+		<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+		<init-param>
+			<param-name>compilerSourceVM</param-name>
+			<param-value>21</param-value>
+		</init-param>
+		<init-param>
+			<param-name>compilerTargetVM</param-name>
+			<param-value>21</param-value>
+		</init-param>
+	</servlet>
+	<!-- 설정 끝 -->
+
+	<resource-ref>
+		<description>Oracle Datasource example</description>
+		<res-ref-name>jdbc/myoracle</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<!-- 1번 필터 등록: 인코딩 필터 -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>com.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+
 </web-app>
 
 
